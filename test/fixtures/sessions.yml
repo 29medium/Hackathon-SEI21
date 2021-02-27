@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start: 2021-02-27 12:06:20
+  end: 2021-02-27 12:06:20
+  pause: 2021-02-27 12:06:20
+  keys: 1
+  backspace: 1
+  last_key: 2021-02-27
+  task: one
+
+two:
+  start: 2021-02-27 12:06:20
+  end: 2021-02-27 12:06:20
+  pause: 2021-02-27 12:06:20
+  keys: 1
+  backspace: 1
+  last_key: 2021-02-27
+  task: two
