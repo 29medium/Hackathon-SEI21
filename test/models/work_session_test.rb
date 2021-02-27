@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SessionTest < ActiveSupport::TestCase
+class WorkSessionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

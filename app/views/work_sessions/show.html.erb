@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @work_session.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @work_session.end %>
+</p>
+
+<p>
+  <strong>Pause:</strong>
+  <%= @work_session.pause %>
+</p>
+
+<p>
+  <strong>Keys:</strong>
+  <%= @work_session.keys %>
+</p>
+
+<p>
+  <strong>Backspace:</strong>
+  <%= @work_session.backspace %>
+</p>
+
+<p>
+  <strong>Last key:</strong>
+  <%= @work_session.last_key %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @work_session.task_id %>
+</p>
+
+<%= link_to 'Edit', edit_work_session_path(@work_session) %> |
+<%= link_to 'Back', work_sessions_path %>

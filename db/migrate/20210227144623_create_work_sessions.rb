@@ -1,6 +1,6 @@
-class CreateSessions < ActiveRecord::Migration[6.1]
+class CreateWorkSessions < ActiveRecord::Migration[6.1]
   def change
-    create_table :sessions do |t|
+    create_table :work_sessions do |t|
       t.datetime :start
       t.datetime :end
       t.time :pause
