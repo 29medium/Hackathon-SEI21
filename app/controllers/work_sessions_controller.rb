@@ -4,6 +4,7 @@ class WorkSessionsController < ApplicationController
   # GET /work_sessions or /work_sessions.json
   def index
     @work_sessions = WorkSession.all
+    @active_session = current_user.running_session
   end
 
   # GET /work_sessions/1 or /work_sessions/1.json

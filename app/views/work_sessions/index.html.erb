@@ -7,10 +7,6 @@
     <tr>
       <th>Start</th>
       <th>End</th>
-      <th>Pause</th>
-      <th>Keys</th>
-      <th>Backspace</th>
-      <th>Last key</th>
       <th>Task</th>
       <th colspan="3"></th>
     </tr>
@@ -21,10 +17,6 @@
       <tr>
         <td><%= work_session.start %></td>
         <td><%= work_session.end %></td>
-        <td><%= work_session.pause %></td>
-        <td><%= work_session.keys %></td>
-        <td><%= work_session.backspace %></td>
-        <td><%= work_session.last_key %></td>
         <td><%= work_session.task_id %></td>
         <td><%= link_to 'Show', work_session %></td>
       </tr>
@@ -34,4 +26,12 @@
 
 <br>
 
-<%= link_to 'New Session', new_work_session_path %>
+<% if @active_session %>
+
+<%= link_to 'End Session', root_path %>
+
+<% else %>
+
+<%= link_to 'Start Session', new_work_session_path %>
+
+<% end %>

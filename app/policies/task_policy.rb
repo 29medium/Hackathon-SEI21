@@ -4,7 +4,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def show?
-    admin? || (!admin? || user==record)
+    admin? || (!admin? && user==record)
   end
 
   def new?

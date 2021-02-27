@@ -4,7 +4,7 @@ class WorkSessionPolicy < ApplicationPolicy
   end
 
   def show?
-    user==record
+    admin? || (!admin? && user==record)
   end
 
   def new?
@@ -12,7 +12,7 @@ class WorkSessionPolicy < ApplicationPolicy
   end
 
   def create?
-    user==record
+    (!admin? && user==record)
   end
 
   def edit?
@@ -20,16 +20,21 @@ class WorkSessionPolicy < ApplicationPolicy
   end
 
   def update?
-    admin?
+    false
   end
 
   def destroy?
-    admin?
+    false
   end
 
   # Scope for Users
   class Scope < Scope
     def resolve
+      if user.admin?
+        scope.all
+      else
+        scope.where(task_id: user.task)
+      end
     end
   end
 end
