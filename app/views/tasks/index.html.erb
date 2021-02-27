@@ -5,9 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Title</th>
       <th>Description</th>
       <th>Deliver date</th>
-      <th>Done</th>
+      <th>Status</th>
       <th>User</th>
       <th colspan="3"></th>
     </tr>
@@ -16,13 +17,14 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
+        <td><%= task.title %></td>
         <td><%= task.description %></td>
         <td><%= task.deliver_date %></td>
-        <td><%= task.done %></td>
+        <td><%= task.status %></td>
         <td><%= task.user_id %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', task if policy(task).show? %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) if policy(task).update? %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } if policy(task).destroy? %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,6 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<% if current_user.admin %>
+  <%= link_to 'New Task', new_task_path %>
+<% end %>

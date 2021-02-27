@@ -1,9 +1,12 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
 
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
+
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = policy_scope(Task)
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -13,6 +16,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    authorize @task
   end
 
   # GET /tasks/1/edit
@@ -60,10 +64,11 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+      authorize @task
     end
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:description, :deliver_date, :done, :user_id)
+      params.require(:task).permit(:title, :description, :deliver_date, :status, :user_id)
     end
 end

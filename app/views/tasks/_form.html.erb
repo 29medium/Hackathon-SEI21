@@ -12,18 +12,23 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
 
   <div class="field">
     <%= form.label :deliver_date %>
-    <%= form.datetime_select :deliver_date %>
+    <%= form.date_select :deliver_date %>
   </div>
 
   <div class="field">
-    <%= form.label :done %>
-    <%= form.text_field :done %>
+    <%= form.label :status %>
+    <%= form.number_field :status %>
   </div>
 
   <div class="field">

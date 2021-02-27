@@ -16,7 +16,8 @@ class TasksTest < ApplicationSystemTestCase
 
     fill_in "Deliver date", with: @task.deliver_date
     fill_in "Description", with: @task.description
-    fill_in "Done", with: @task.done
+    fill_in "Status", with: @task.status
+    fill_in "Title", with: @task.title
     fill_in "User", with: @task.user_id
     click_on "Create Task"
 
@@ -30,7 +31,8 @@ class TasksTest < ApplicationSystemTestCase
 
     fill_in "Deliver date", with: @task.deliver_date
     fill_in "Description", with: @task.description
-    fill_in "Done", with: @task.done
+    fill_in "Status", with: @task.status
+    fill_in "Title", with: @task.title
     fill_in "User", with: @task.user_id
     click_on "Update Task"
 

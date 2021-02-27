@@ -4,7 +4,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def show?
-    admin? || (common? || user==record)
+    admin? || (!admin? || user==record)
   end
 
   def new?
@@ -30,6 +30,11 @@ class TaskPolicy < ApplicationPolicy
   # Scope for Users
   class Scope < Scope
     def resolve
+      if user.admin?
+        scope.all
+      else
+        scope.where(user_id: @user.id)
+      end
     end
   end
 end

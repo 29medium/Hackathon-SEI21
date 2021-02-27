@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  title: MyString
   description: MyText
-  deliver_date: 2021-02-27 12:04:19
-  done: 
+  deliver_date: 2021-02-27
+  status: 1
   user: one
 
 two:
+  title: MyString
   description: MyText
-  deliver_date: 2021-02-27 12:04:19
-  done: 
+  deliver_date: 2021-02-27
+  status: 1
   user: two
