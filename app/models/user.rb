@@ -20,4 +20,8 @@ class User < ApplicationRecord
   def running_session_id
     WorkSession.where(task_id: Task.where(user_id: id)).where(end: nil).pluck(:id)
   end
+
+  def name 
+    email.split('@')[0].capitalize
+  end
 end

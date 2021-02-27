@@ -30,6 +30,13 @@ class WorkSessionsController < ApplicationController
   def create
     @work_session = WorkSession.new(work_session_params)
 
+    @task = @work_session.task
+
+    if @task.status == 0
+      @task.status = 1
+      @task.save!
+    end
+
     respond_to do |format|
       if @work_session.save
         format.html { redirect_to @work_session, notice: "Work session was successfully created." }

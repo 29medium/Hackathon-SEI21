@@ -27,6 +27,11 @@ class TaskPolicy < ApplicationPolicy
     admin?
   end
 
+  def done?
+    (!admin? && user==record)
+  end
+
+
   # Scope for Users
   class Scope < Scope
     def resolve

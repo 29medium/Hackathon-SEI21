@@ -22,6 +22,13 @@ class TasksController < ApplicationController
   def edit
   end
 
+  def done
+    @task = Task.find(params[:task_id])
+    @task.status = 2
+    @task.save!
+    redirect_to tasks_path
+  end
+
   # POST /tasks or /tasks.json
   def create
     @task = Task.new(task_params)

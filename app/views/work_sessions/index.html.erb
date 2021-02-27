@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Work Sessions</h1>
 
 <table class="w3-table-all w3-hoverable">
@@ -18,7 +16,7 @@
         <td><%= work_session.start %></td>
         <td><%= work_session.end %></td>
         <td><%= work_session.task_id %></td>
-        <td><%= link_to 'Show', work_session %></td>
+        <td><%= link_to 'Show', work_session, class:"w3-btn-small w3-round-xxlarge w3-deep-orange w3-margin" %></td>
       </tr>
     <% end %>
   </tbody>
