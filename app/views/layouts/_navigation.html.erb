@@ -1,42 +1,42 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">Hackaton</a>
+<nav class="navbar navbar-expand-lg  w3-deep-orange">
+  <a class="navbar-brand w3-text-white w3-bold">Hackaton</a>
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <%= link_to root_path, class: 'nav-link' do %>
+      <li class="nav-item ">
+        <%= link_to root_path, class: 'nav-link w3-btn w3-round-xxlarge' do %>
           <%= "Home" %>
         <% end %>
 
       <% if current_user %>
         
-        <li class="nav-item">
-        <%= link_to tasks_path, class: 'nav-link' do %>
+        <li class="nav-item ">
+        <%= link_to tasks_path, class: 'nav-link w3-btn w3-round-xxlarge' do %>
           <%= "Tasks" %>
         <% end %>
         </li>
 
         <li class="nav-item">
-        <%= link_to work_sessions_path, class: 'nav-link' do %>
+        <%= link_to work_sessions_path, class: 'nav-link w3-btn w3-round-xxlarge' do %>
           <%= "Sessions" %>
         <% end %>
         </li>
 
         <li class="nav-item">
-        <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+        <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link w3-btn w3-round-xxlarge' do %>
           <%= "Logout" %>
         <% end %>
         </li>
         
       <% else %>
         <li class="nav-item">
-        <%= link_to new_user_registration_path, class: 'nav-link' do %>
+        <%= link_to new_user_registration_path, class: 'nav-link w3-btn w3-round-xxlarge' do %>
           <%= "Sign Up" %>
         <% end %>
         </li>
 
         <li class="nav-item">
-        <%= link_to new_user_session_path, class: 'nav-link' do %>
+        <%= link_to new_user_session_path, class: 'nav-link w3-btn w3-round-xxlarge' do %>
           <%= "Log In" %>
         <% end %>
         </li>
