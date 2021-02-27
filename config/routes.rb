@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'home/index'
   resources :sessions
   resources :tasks
   devise_for :users
-  root to: "pages#home"
+  root to: "home#index"
 end

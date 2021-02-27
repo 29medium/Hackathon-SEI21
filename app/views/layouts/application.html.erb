@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HackatonSei21</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= content_for?(:title) ? yield(:title) : "Hackaton" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,8 +10,16 @@
   </head>
 
   <body>
+
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+    <main role="main">
+      <%= yield %>
+    </main>
   </body>
 </html>
