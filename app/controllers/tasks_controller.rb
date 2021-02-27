@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
-
-  #after_action :verify_authorized, except: :index
+  after_action :verify_authorized, except: :index
   after_action :verify_policy_scoped, only: :index
 
   # GET /tasks or /tasks.json
@@ -16,7 +15,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
-    #authorize @task
+    authorize @task
   end
 
   # GET /tasks/1/edit
@@ -26,6 +25,7 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task = Task.new(task_params)
+    authorize @task
 
     respond_to do |format|
       if @task.save

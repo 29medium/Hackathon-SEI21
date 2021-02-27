@@ -26,12 +26,10 @@
 
 <br>
 
-<% if @active_session %>
-
-<%= link_to 'End Session', root_path ,class:"w3-btn w3-round-xxlarge w3-deep-orange w3-margin"%>
-
-<% else %>
-
-<%= link_to 'Start Session', new_work_session_path ,class:"w3-btn w3-round-xxlarge w3-deep-orange w3-margin"%>
-
+<% if !current_user.admin? %>
+  <% if @active_session %>
+    <%= link_to 'End Session', root_path ,class:"w3-btn w3-round-xxlarge w3-deep-orange w3-margin"%>
+  <% else %>
+    <%= link_to 'Start Session', new_work_session_path ,class:"w3-btn w3-round-xxlarge w3-deep-orange w3-margin"%>
+  <% end %>
 <% end %>

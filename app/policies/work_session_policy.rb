@@ -33,7 +33,7 @@ class WorkSessionPolicy < ApplicationPolicy
       if user.admin?
         scope.all
       else
-        scope.where(task_id: user.task)
+        scope.where(task_id: Task.where(user_id: user.id))
       end
     end
   end

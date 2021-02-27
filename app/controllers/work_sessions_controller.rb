@@ -1,9 +1,12 @@
 class WorkSessionsController < ApplicationController
   before_action :set_work_session, only: %i[ show edit update destroy ]
 
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
+
   # GET /work_sessions or /work_sessions.json
   def index
-    @work_sessions = WorkSession.all
+    @work_sessions = policy_scope(WorkSession)
     @active_session = current_user.running_session
   end
 
@@ -14,6 +17,7 @@ class WorkSessionsController < ApplicationController
   # GET /work_sessions/new
   def new
     @work_session = WorkSession.new
+    authorize @work_session
   end
 
   # GET /work_sessions/1/edit
@@ -23,6 +27,7 @@ class WorkSessionsController < ApplicationController
   # POST /work_sessions or /work_sessions.json
   def create
     @work_session = WorkSession.new(work_session_params)
+    authorize @work_session
 
     respond_to do |format|
       if @work_session.save
@@ -47,6 +52,7 @@ class WorkSessionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_work_session
       @work_session = WorkSession.find(params[:id])
+      authorize @work_session
     end
 
     # Only allow a list of trusted parameters through.
