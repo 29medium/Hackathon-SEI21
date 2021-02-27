@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
-  after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
+  before_action :set_users, only: %i[ new edit ]
+  before_action :authorization
 
   # GET /tasks or /tasks.json
   def index
@@ -32,7 +32,10 @@ class TasksController < ApplicationController
         format.html { redirect_to @task, notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { 
+          render :new, status: :unprocessable_entity 
+          set_users
+        }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
@@ -45,7 +48,10 @@ class TasksController < ApplicationController
         format.html { redirect_to @task, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { 
+          render :edit, status: :unprocessable_entity 
+          set_users
+        }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
@@ -67,8 +73,16 @@ class TasksController < ApplicationController
       authorize @task
     end
 
+    def set_users
+      @users_task = User.where(admin: false).pluck(:id)
+    end
+
     # Only allow a list of trusted parameters through.
     def task_params
       params.require(:task).permit(:title, :description, :deliver_date, :status, :user_id)
+    end
+
+    def authorization
+      authorize current_user, policy_class: TaskPolicy
     end
 end

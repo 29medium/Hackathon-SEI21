@@ -1,8 +1,7 @@
 class WorkSessionsController < ApplicationController
   before_action :set_work_session, only: %i[ show edit update destroy ]
-
-  after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
+  before_action :set_tasks, only: %i[ new edit ]
+  before_action :authorization
 
   # GET /work_sessions or /work_sessions.json
   def index
@@ -34,7 +33,10 @@ class WorkSessionsController < ApplicationController
         format.html { redirect_to @work_session, notice: "Work session was successfully created." }
         format.json { render :show, status: :created, location: @work_session }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { 
+          render :new, status: :unprocessable_entity 
+          set_tasks
+        }
         format.json { render json: @work_session.errors, status: :unprocessable_entity }
       end
     end
@@ -55,8 +57,16 @@ class WorkSessionsController < ApplicationController
       authorize @work_session
     end
 
+    def set_tasks
+      @tasks = Task.where(user_id: current_user).where.not(status: 2)
+    end
+
     # Only allow a list of trusted parameters through.
     def work_session_params
       params.require(:work_session).permit(:start, :end, :pause, :keys, :backspace, :last_key, :task_id)
+    end
+
+    def authorization
+      authorize current_user, policy_class: WorkSessionPolicy
     end
 end

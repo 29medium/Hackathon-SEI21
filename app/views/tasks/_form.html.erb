@@ -26,14 +26,11 @@
     <%= form.date_select :deliver_date %>
   </div>
 
-  <div class="field hidden">
-    <%= form.label :status %>
-    <%= form.hidden_field :status, value: 0 %>
-  </div>
+  <%= form.hidden_field :status, value: 0 %>
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.select :user_id, @users_task %>
   </div>
 
   <div class="actions">
