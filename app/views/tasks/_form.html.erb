@@ -26,9 +26,9 @@
     <%= form.date_select :deliver_date %>
   </div>
 
-  <div class="field">
+  <div class="field hidden">
     <%= form.label :status %>
-    <%= form.number_field :status %>
+    <%= form.hidden_field :status, value: 0 %>
   </div>
 
   <div class="field">

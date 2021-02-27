@@ -36,24 +36,10 @@ class WorkSessionsController < ApplicationController
 
   # PATCH/PUT /work_sessions/1 or /work_sessions/1.json
   def update
-    respond_to do |format|
-      if @work_session.update(work_session_params)
-        format.html { redirect_to @work_session, notice: "Work session was successfully updated." }
-        format.json { render :show, status: :ok, location: @work_session }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @work_session.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /work_sessions/1 or /work_sessions/1.json
   def destroy
-    @work_session.destroy
-    respond_to do |format|
-      format.html { redirect_to work_sessions_url, notice: "Work session was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private

@@ -27,8 +27,6 @@
         <td><%= work_session.last_key %></td>
         <td><%= work_session.task_id %></td>
         <td><%= link_to 'Show', work_session %></td>
-        <td><%= link_to 'Edit', edit_work_session_path(work_session) %></td>
-        <td><%= link_to 'Destroy', work_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Work Session', new_work_session_path %>
+<%= link_to 'New Session', new_work_session_path %>

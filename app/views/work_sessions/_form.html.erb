@@ -16,30 +16,12 @@
     <%= form.datetime_select :start %>
   </div>
 
-  <div class="field">
-    <%= form.label :end %>
-    <%= form.datetime_select :end %>
-  </div>
 
-  <div class="field">
-    <%= form.label :pause %>
-    <%= form.time_select :pause %>
-  </div>
-
-  <div class="field">
-    <%= form.label :keys %>
-    <%= form.number_field :keys %>
-  </div>
-
-  <div class="field">
-    <%= form.label :backspace %>
-    <%= form.number_field :backspace %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_key %>
-    <%= form.date_select :last_key %>
-  </div>
+  <%= form.hidden_field :end %>
+  <%= form.hidden_field :pause %>
+  <%= form.hidden_field :keys %>
+  <%= form.hidden_field :backspace %>
+  <%= form.hidden_field :last_key %>
 
   <div class="field">
     <%= form.label :task_id %>
