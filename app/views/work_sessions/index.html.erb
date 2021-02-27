@@ -2,7 +2,7 @@
 
 <h1>Work Sessions</h1>
 
-<table>
+<table class="w3-table-all w3-hoverable">
   <thead>
     <tr>
       <th>Start</th>
@@ -28,10 +28,10 @@
 
 <% if @active_session %>
 
-<%= link_to 'End Session', root_path %>
+<%= link_to 'End Session', root_path ,class:"w3-btn w3-round-xxlarge w3-deep-orange w3-margin"%>
 
 <% else %>
 
-<%= link_to 'Start Session', new_work_session_path %>
+<%= link_to 'Start Session', new_work_session_path ,class:"w3-btn w3-round-xxlarge w3-deep-orange w3-margin"%>
 
 <% end %>
