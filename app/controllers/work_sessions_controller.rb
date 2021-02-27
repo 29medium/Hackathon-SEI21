@@ -6,7 +6,11 @@ class WorkSessionsController < ApplicationController
   # GET /work_sessions or /work_sessions.json
   def index
     @work_sessions = policy_scope(WorkSession)
-    @active_session = current_user.running_session
+    @active_session = current_user.running_session?
+
+    if @active_session
+      @session = current_user.running_session_id
+    end
   end
 
   # GET /work_sessions/1 or /work_sessions/1.json
@@ -38,6 +42,15 @@ class WorkSessionsController < ApplicationController
         format.json { render json: @work_session.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def end_session
+    @work_session = WorkSession.find(params[:work_session_id])
+
+    @work_session.end = DateTime.now
+    @work_session.save!
+
+    redirect_to work_sessions_path
   end
 
   # PATCH/PUT /work_sessions/1 or /work_sessions/1.json

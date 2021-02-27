@@ -13,7 +13,11 @@ class User < ApplicationRecord
       uniqueness: true,
       format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  def running_session 
+  def running_session?
     WorkSession.where(task_id: Task.where(user_id: id)).where(end: nil).any?
+  end
+
+  def running_session_id
+    WorkSession.where(task_id: Task.where(user_id: id)).where(end: nil).pluck(:id)
   end
 end

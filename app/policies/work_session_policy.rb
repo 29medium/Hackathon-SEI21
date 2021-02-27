@@ -15,6 +15,10 @@ class WorkSessionPolicy < ApplicationPolicy
     (!admin? && user==record)
   end
 
+  def end_session?
+    (!admin? && user==record)
+  end
+
   def edit?
     update?
   end

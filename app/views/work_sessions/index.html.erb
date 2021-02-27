@@ -28,7 +28,7 @@
 
 <% if !current_user.admin? %>
   <% if @active_session %>
-    <%= link_to 'End Session', root_path ,class:"w3-btn w3-round-xxlarge w3-deep-orange w3-margin"%>
+    <%= link_to 'End Session', work_session_end_session_path(work_session_id: @session) ,class:"w3-btn w3-round-xxlarge w3-deep-orange w3-margin"%>
   <% else %>
     <%= link_to 'Start Session', new_work_session_path ,class:"w3-btn w3-round-xxlarge w3-deep-orange w3-margin"%>
   <% end %>
