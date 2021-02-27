@@ -16,7 +16,6 @@ class WorkSessionsController < ApplicationController
   # GET /work_sessions/new
   def new
     @work_session = WorkSession.new
-    authorize @work_session
   end
 
   # GET /work_sessions/1/edit
@@ -26,7 +25,6 @@ class WorkSessionsController < ApplicationController
   # POST /work_sessions or /work_sessions.json
   def create
     @work_session = WorkSession.new(work_session_params)
-    authorize @work_session
 
     respond_to do |format|
       if @work_session.save
@@ -54,11 +52,10 @@ class WorkSessionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_work_session
       @work_session = WorkSession.find(params[:id])
-      authorize @work_session
     end
 
     def set_tasks
-      @tasks = Task.where(user_id: current_user).where.not(status: 2)
+      @tasks = Task.where(user_id: current_user).where.not(status: 2).pluck(:id)
     end
 
     # Only allow a list of trusted parameters through.

@@ -11,11 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :start %>
-    <%= form.datetime_select :start %>
-  </div>
-
+  <%= form.hidden_field :start, value: DateTime.now %>
   <%= form.hidden_field :end %>
   <%= form.hidden_field :pause %>
   <%= form.hidden_field :keys %>
@@ -24,7 +20,7 @@
 
   <div class="field">
     <%= form.label :task_id %>
-    <%= form.text_field :task_id %>
+    <%= form.select :task_id, @tasks %>
   </div>
 
   <div class="actions">

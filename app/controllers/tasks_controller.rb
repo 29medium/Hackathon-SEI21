@@ -25,7 +25,6 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task = Task.new(task_params)
-    authorize @task
 
     respond_to do |format|
       if @task.save
@@ -70,7 +69,6 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
-      authorize @task
     end
 
     def set_users
