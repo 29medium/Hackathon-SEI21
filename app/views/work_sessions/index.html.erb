@@ -3,6 +3,7 @@
 <table class="w3-table-all w3-hoverable">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Start</th>
       <th>End</th>
       <th>Task</th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @work_sessions.each do |work_session| %>
       <tr>
+        <td><%= work_session.id %></td>
         <td><%= work_session.start %></td>
         <td><%= work_session.end %></td>
         <td><%= work_session.task_id %></td>

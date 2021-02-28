@@ -4,8 +4,10 @@ import calendar
 import time
 import requests
 
+print("Introduzir work session")
+x = input(">> ")
 
-url = 'http://loaclhost:3000/api/v1/work_sessions/1'
+url = 'http://localhost:3000/api/v1/work_sessions/' + x
 
 dict = {
     "keys":0,
@@ -30,10 +32,7 @@ def on_press(key):
         elif key != keyboard.Key.esc:
             dict["keys"] += 1
         f.write(str(ts) + ':' + 'KeyPressed' + ':' + upper + '\n')
-
-
     f.close()
-
 
 # deatect key releases
 def on_release(key):
@@ -43,15 +42,11 @@ def on_release(key):
     upper = str(key).upper()
     f.write(str(ts) + ':' + 'KeyRealease' + ':' + upper + '\n')
     if key == keyboard.Key.esc:
-        # Stop Listener
-        #print(requests.post(url,dict))
         print('Stop')
-        print(dict)
-        r = requests.put(url,json=dict)
-        print('status code {}'.format(r.status_code))
-        dict["keys"]=0
-        dict["backspace"]=0
-
+        r = requests.put(url, json=dict)
+        print(r.text)
+        dict['keys']=0
+        dict['backspace']=0
 
 # Collectevents
 with keyboard.Listener(
