@@ -3,9 +3,7 @@ Rails.application.routes.draw do
     get :done
   end
 
-  resources :work_sessions do
-    get :end_session
-  end
+  resources :work_sessions
 
   devise_for :users
   root to: "home#index"

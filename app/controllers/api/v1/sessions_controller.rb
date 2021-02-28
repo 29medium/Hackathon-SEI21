@@ -3,6 +3,8 @@ module Api
     class SessionsController < Devise::SessionsController
       before_action :sign_in_params, only: :create
       before_action :load_user, only: :create
+      skip_before_action :verify_authenticity_token
+      
       # sign in
       def create
         if @user.valid_password?(sign_in_params[:password])
@@ -10,7 +12,7 @@ module Api
           render json: {
             messages: "Signed In Successfully",
             is_success: true,
-            data: {user: @user}
+            data: {user: @user, work_session: @user.running_session_id}
           }, status: :ok
         else
           render json: {

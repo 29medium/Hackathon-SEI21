@@ -41,10 +41,9 @@ ActiveRecord::Schema.define(version: 2021_02_28_101119) do
   create_table "work_sessions", force: :cascade do |t|
     t.datetime "start"
     t.datetime "end"
-    t.time "pause"
     t.integer "keys"
     t.integer "backspace"
-    t.date "last_key"
+    t.datetime "last_key"
     t.integer "task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

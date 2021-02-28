@@ -51,15 +51,6 @@ class WorkSessionsController < ApplicationController
     end
   end
 
-  def end_session
-    @work_session = WorkSession.find(params[:work_session_id])
-
-    @work_session.end = DateTime.now
-    @work_session.save!
-
-    redirect_to work_sessions_path
-  end
-
   # PATCH/PUT /work_sessions/1 or /work_sessions/1.json
   def update
   end
@@ -80,7 +71,7 @@ class WorkSessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def work_session_params
-      params.require(:work_session).permit(:start, :end, :pause, :keys, :backspace, :last_key, :task_id)
+      params.require(:work_session).permit(:start, :end, :keys, :backspace, :last_key, :task_id)
     end
 
     def authorization
