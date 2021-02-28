@@ -47,7 +47,8 @@ def on_release(key):
         #print(requests.post(url,dict))
         print('Stop')
         print(dict)
-        requests.put(url,dict)
+        r = requests.put(url,json=dict)
+        print('status code {}'.format(r.status_code))
         dict["keys"]=0
         dict["backspace"]=0
 
