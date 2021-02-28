@@ -1,7 +1,6 @@
 from pynput import keyboard
 
 import datetime
-import calendar
 import requests
 
 # detect keypress
@@ -29,8 +28,9 @@ dict = {
 url_user = 'http://localhost:3000/api/v1/sign_in'
 url_work_sessions = 'http://localhost:3000/api/v1/work_sessions/'
 
-print("Email")
+print("Email:")
 email = input(">> ")
+print("Password:")
 password = input(">> ")
 
 x = requests.post(url_user, json={"sign_in": {"email":email, "password":password}})
