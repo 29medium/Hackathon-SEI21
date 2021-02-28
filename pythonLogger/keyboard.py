@@ -5,14 +5,11 @@ import requests
 
 # detect keypress
 def on_press(key):
-    try:
-        dict["keys"] += 1
-        dict["last_key"] = datetime.datetime.now()
-    except:
-        if key == keyboard.Key.backspace:
-            dict["backspace"] += 1
-        if key != keyboard.Key.esc:
-            dict["keys"] += 1
+    dict["keys"] += 1
+    dict["last_key"] = datetime.datetime.now()
+    if key == keyboard.Key.backspace:
+        dict["backspace"] += 1
+
 
 # deatect key releases
 def on_release(key):
