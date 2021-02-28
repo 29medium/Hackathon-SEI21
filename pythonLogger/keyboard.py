@@ -6,13 +6,14 @@ import requests
 # detect keypress
 def on_press(key):
     dict["keys"] += 1
-    dict["last_key"] = datetime.datetime.now()
     if key == keyboard.Key.backspace:
         dict["backspace"] += 1
     elif key == keyboard.Key.ctrl:
         chaves["ctrl"]=True
     elif key == keyboard.Key.esc:
         chaves["esc"]=True
+    else: 
+        dict["last_key"] = datetime.datetime.now()
 
 
 
