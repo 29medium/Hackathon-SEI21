@@ -19,5 +19,5 @@ module Api
         params.require(:work_session).permit(:keys, :backspace)
       end
     end
-  end
+  end 
 end

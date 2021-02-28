@@ -14,6 +14,8 @@ gem 'devise'
 
 gem 'pundit'
 
+gem "simple_token_authentication"
+
 gem 'better_errors'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'

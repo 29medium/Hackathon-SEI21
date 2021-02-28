@@ -10,9 +10,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
 
-  namespace :api do
+  namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :work_sessions
+      devise_scope :user do
+        post "sign_in", to: "sessions#create"
+      end
     end
   end
 end

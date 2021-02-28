@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_155437) do
+ActiveRecord::Schema.define(version: 2021_02_28_101119) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2021_02_27_155437) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false
+    t.string "authentication_token", limit: 30
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
