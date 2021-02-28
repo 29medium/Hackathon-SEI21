@@ -42,7 +42,7 @@ if x["is_success"]==True:
         url_work_sessions += str(work_session[0])
         print("Started recording")
         with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
-                listener.join()
+            listener.join()
         print("Stopped recording")
         dict["last_key"] = dict["last_key"].isoformat()
         r = requests.put(url_work_sessions, json=dict)
